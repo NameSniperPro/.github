@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=block" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07090c; --fg: #e8edf2; --surface: #0e1318; --muted: #9aa6b2; --faint: #6b7480;
+    --primary: #34d399; --teal: #0d9488; --accent: #fbbf24; --danger: #f87171;
+    --border: rgba(255,255,255,0.08);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1280px; height: 400px; background: var(--bg); overflow: hidden; }
+  body { font-family: 'Space Grotesk', sans-serif; color: var(--fg); position: relative; }
+
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse 80% 90% at 70% 50%, #000 30%, transparent 85%);
+  }
+  .glow {
+    position: absolute; width: 620px; height: 620px; right: 40px; top: -110px;
+    background: radial-gradient(circle, rgba(52,211,153,0.16), rgba(13,148,136,0.06) 45%, transparent 70%);
+  }
+  .edge { position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, #34d399 30%, #0d9488 70%, transparent); opacity: .7; }
+
+  .left { position: absolute; left: 80px; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .brand svg { width: 44px; height: 44px; }
+  .brand span { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; }
+  .pill {
+    margin-top: 30px; align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 1px solid rgba(52,211,153,0.22); background: rgba(52,211,153,0.06);
+    color: var(--primary); border-radius: 999px; padding: 7px 14px;
+    font: 500 13px 'JetBrains Mono', monospace; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 0 4px rgba(52,211,153,0.18); }
+  h1 { margin-top: 18px; font-size: 64px; line-height: 1.02; font-weight: 700; letter-spacing: -0.035em; }
+  h1 em { font-style: normal; color: var(--primary); }
+  .sub { margin-top: 20px; font: 400 15px 'JetBrains Mono', monospace; color: var(--muted); letter-spacing: 0.01em; }
+  .sub b { color: var(--fg); font-weight: 500; }
+  .sub s { text-decoration: none; color: var(--faint); margin: 0 10px; }
+
+  .scope { position: absolute; left: 800px; top: 50%; width: 300px; height: 300px; transform: translate(-50%, -50%); }
+  .card {
+    position: absolute; right: 70px; top: 50%; transform: translateY(-50%); width: 320px;
+    background: rgba(14,19,24,0.92); border: 1px solid var(--border); border-radius: 16px;
+    padding: 18px 20px; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6), 0 0 50px -18px rgba(52,211,153,0.25);
+  }
+  .card .head { display: flex; justify-content: space-between; align-items: center; }
+  .handle { font: 500 20px 'JetBrains Mono', monospace; }
+  .tag { font: 500 11px 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--primary); background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.25);
+    padding: 4px 8px; border-radius: 6px; }
+  .row { display: flex; justify-content: space-between; align-items: center; margin-top: 12px;
+    font: 400 13px 'JetBrains Mono', monospace; color: var(--muted); }
+  .row:first-of-type { margin-top: 16px; }
+  .st { display: inline-flex; align-items: center; gap: 7px; }
+  .st i { width: 7px; height: 7px; border-radius: 50%; }
+  .ok { color: var(--primary); } .ok i { background: var(--primary); }
+  .watch { color: var(--accent); } .watch i { background: var(--accent); }
+  .alert { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border);
+    font: 400 12px 'JetBrains Mono', monospace; color: var(--faint); display: flex; gap: 8px; align-items: center; }
+  .alert b { color: var(--fg); font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="glow"></div>
+
+  <svg class="scope" viewBox="0 0 300 300" fill="none">
+    <circle cx="150" cy="150" r="140" stroke="rgba(52,211,153,0.10)" stroke-width="1"/>
+    <circle cx="150" cy="150" r="100" stroke="rgba(52,211,153,0.18)" stroke-width="1.5" stroke-dasharray="3 7"/>
+    <circle cx="150" cy="150" r="58" stroke="rgba(52,211,153,0.45)" stroke-width="2.5"/>
+    <g stroke="rgba(52,211,153,0.5)" stroke-width="2.5" stroke-linecap="round">
+      <line x1="150" y1="10" x2="150" y2="70"/><line x1="150" y1="230" x2="150" y2="290"/>
+      <line x1="10" y1="150" x2="70" y2="150"/><line x1="230" y1="150" x2="290" y2="150"/>
+    </g>
+    <circle cx="150" cy="150" r="6" fill="#34d399"/>
+  </svg>
+
+  <div class="left">
+    <div class="brand">
+      <svg viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0e1318"/>
+        <g stroke="#34d399" stroke-width="4.5" stroke-linecap="round" fill="none">
+          <circle cx="32" cy="32" r="16.5"/><line x1="32" y1="6" x2="32" y2="15"/><line x1="32" y1="49" x2="32" y2="58"/>
+          <line x1="6" y1="32" x2="15" y2="32"/><line x1="49" y1="32" x2="58" y2="32"/></g>
+        <circle cx="32" cy="32" r="4.5" fill="#34d399"/></svg>
+      <span>NameSniper</span>
+    </div>
+    <div class="pill"><i></i>Handle Monitoring · Drop Alerts</div>
+    <h1>Claim the handle.<br><em>Snipe</em> the drop.</h1>
+    <p class="sub"><b>namesniper.pro</b><s>/</s>usernames<s>·</s>domains<s>·</s>trademarks<s>·</s>MCP</p>
+  </div>
+
+  <div class="card">
+    <div class="head"><span class="handle">@yourname</span><span class="tag">Watching</span></div>
+    <div class="row"><span>youtube</span><span class="st ok"><i></i>available</span></div>
+    <div class="row"><span>github</span><span class="st ok"><i></i>available</span></div>
+    <div class="row"><span>instagram</span><span class="st watch"><i></i>taken · on watch</span></div>
+    <div class="row"><span>yourname.com</span><span class="st ok"><i></i>available</span></div>
+    <div class="alert"><span class="st ok"><i></i></span><span><b>Alert sent</b> the moment it drops</span></div>
+  </div>
+
+  <div class="edge"></div>
+</body>
+</html>
