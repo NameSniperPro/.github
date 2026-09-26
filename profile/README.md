@@ -20,8 +20,8 @@
 
 ### 🎯 What NameSniper does
 
-|  |  |
-|---|---|
+| Feature | What it does |
+|:--|:--|
 | **Check** | Username, domain and trademark availability in one sweep, with a confidence score on every verdict. [Try it →](https://namesniper.pro/check) |
 | **Monitor** | Watch taken handles and get alerted by email, Discord, Slack or webhook when they free up. [Watch a handle →](https://namesniper.pro/monitor) |
 | **Generate** | AI brand names, checked for availability before you fall in love with one. [Generate →](https://namesniper.pro/generate) |
